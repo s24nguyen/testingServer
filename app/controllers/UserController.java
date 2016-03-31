@@ -126,7 +126,7 @@ public class UserController extends Controller {
             return unauthorized(Json.toJson(ret));
         }
         // 4. Compare password.
-        String sha256 = User.getSha512(request.get("password").asText());
+        String sha256 = User.getSha256(request.get("password").asText());
         if (sha256.equals(user.getPassword())) {
             // Success
             String authToken = generateAuthToken();
