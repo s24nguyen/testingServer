@@ -17,20 +17,20 @@ import java.util.List;
 public class User extends Model{
     @Id
     @GeneratedValue
-    private Long id;
+    public Long id;
 
     @Constraints.Required
-    private String firstName;
+    public String first_name;
 
     @Constraints.Required
-    private String lastName;
+    public String last_name;
 
     @Constraints.Required
     @Constraints.Email
-    private String email;
+    public String email;
 
     @Constraints.Required
-    private String password;
+    public String password;
 
     public String getToken() {
         return token;
@@ -58,19 +58,19 @@ public class User extends Model{
     }
 
     public String getFirst_name() {
-        return firstName;
+        return first_name;
     }
 
     public void setFirst_name(String first_name) {
-        this.firstName = first_name;
+        this.first_name = first_name;
     }
 
     public String getLast_name() {
-        return lastName;
+        return last_name;
     }
 
     public void setLast_name(String last_name) {
-        this.lastName = last_name;
+        this.last_name = last_name;
     }
 
     public String getEmail() {
@@ -104,7 +104,7 @@ public class User extends Model{
                                   String order, String filter) {
         return Ebean.find(User.class)
                 .where()
-                .ilike("firstName", "%" + filter + "%")
+                .ilike("first_name", "%" + filter + "%")
                 .orderBy(sortBy + " " + order)
                 .fetch("company")
                 .findPagedList(pageSize*(page-1)+1, pageSize*page);
@@ -112,16 +112,16 @@ public class User extends Model{
 
     // Transient field
     public String getConfirm_password() {
-        return cPassword;
+        return confirm_password;
     }
 
     public void setConfirm_password(String confirm_password) {
-        this.cPassword = User.getSha512(confirm_password);
+        this.confirm_password = User.getSha512(confirm_password);
     }
 
     // Transient field
     @Transient
-    String cPassword;
+    String confirm_password;
 
     // Get SHA password
     public static String getSha512(String input) {

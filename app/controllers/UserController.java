@@ -38,10 +38,10 @@ public class UserController extends Controller {
             JsonNode node = form.errorsAsJson();    // Get errors
             User error = new User();
 
-            if(form.error("firstName") != null)
-                error.setFirst_name( node.get("firstName").get(0).asText() );
-            if(form.error("lastName") != null)
-                error.setLast_name( node.get("lastName").get(0).asText() );
+            if(form.error("first_name") != null)
+                error.setFirst_name( node.get("first_name").get(0).asText() );
+            if(form.error("last_name") != null)
+                error.setLast_name( node.get("last_name").get(0).asText() );
             if(form.error("email") != null)
                 error.setEmail( node.get("email").get(0).asText() );
             if(form.error("password") != null)
