@@ -46,7 +46,7 @@ public class User extends Model{
         return password;
     }
     public void setPassword(String password) {
-        this.password = User.getSha512(password);
+        this.password = User.getSha256(password);
     }
 
     public Long getId() {
@@ -116,7 +116,7 @@ public class User extends Model{
     }
 
     public void setConfirm_password(String confirm_password) {
-        this.confirm_password = User.getSha512(confirm_password);
+        this.confirm_password = User.getSha256(confirm_password);
     }
 
     // Transient field
@@ -124,7 +124,7 @@ public class User extends Model{
     String confirm_password;
 
     // Get SHA password
-    public static String getSha512(String input) {
+    public static String getSha256(String input) {
         MessageDigest mDigest = null;
         try {
             mDigest = MessageDigest.getInstance("SHA-256");

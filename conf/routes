@@ -16,5 +16,5 @@ GET     /assets/*file               controllers.Assets.versioned(path="/public",
 
 # Professional Services API
 POST    /api/register               controllers.UserController.register
-POST    /api/login                  controllers.UserController.authenticate
+POST    /api/header                 controllers.UserController.authenticate
 GET     /api/logout                 controllers.UserController.logout(id:Long)
